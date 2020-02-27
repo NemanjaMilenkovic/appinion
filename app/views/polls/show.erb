@@ -1,0 +1,9 @@
+<h1>Vote for <%= @poll.name %></h1>
+<ul>
+    <% @poll.options.each do |option| %>
+        <li>
+            <%= link_to option.label, action: :vote, poll: @poll.id, option: option.id %>
+            (<%= option.votes.count %> <%= 'vote'.pluralize(option.votes.count) %>)
+        </li>
+    <% end %>
+</ul>

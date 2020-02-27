@@ -1,0 +1,46 @@
+ <a href="/">Home</a>
+
+<%= form_with url: '/save', scope: :poll, local: true do |form| %>
+  <%= form.hidden_field :id, value: @poll.id %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name, value: @poll.name %>
+  </p>
+
+  <p><button type="button" onclick="addOption()" class="btn btn-success">Add option</button></p>
+  <ul id="poll-options">
+    <% @poll.options.each do |option| %>
+      <li>
+        <%= form.text_field 'options][', value: option.label %>
+        <button type="button" class="btn btn-success" onclick="deleteOption(this) ">delete</button>
+      </li>
+    <% end %>
+  </ul>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+<script>
+function deleteOption(btn) {
+  const li = btn.parentNode;
+  li.remove()
+}
+function addOption() {
+  const ul = document.getElementById('poll-options');
+  const li = document.createElement('li');
+
+  ul.appendChild(li);
+  
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.name = 'poll[options][]';
+  li.appendChild(input);
+
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.innerHTML = 'delete';
+  btn.onclick = function() { deleteOption(this) }
+  li.appendChild(btn);
+}
+</script>

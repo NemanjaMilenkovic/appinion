@@ -1,0 +1,20 @@
+<h1>Polls</h1>
+<p>
+    <%= link_to 'Create new poll', action: :create %>
+</p>
+<% if @polls.count.positive? %>
+    <ul>
+        <% @polls.each do |poll| %>
+            <li>
+                <%= link_to poll.name, action: :show, id: poll.id %>
+                <span class="actions">(
+                    <%= link_to :edit, action: :edit, id: poll.id %> |
+                    <%= link_to :delete, { action: :remove, id: poll.id },
+                                data: { confirm: 'Do you wanna delete poll?' } %> 
+                )</span>
+            </li>
+        <% end %>
+    </ul>
+<% else %>
+<p>No polls at the moment.</p>
+<% end %>
