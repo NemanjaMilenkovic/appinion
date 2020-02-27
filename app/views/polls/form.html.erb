@@ -7,7 +7,7 @@
     <%= form.text_field :name, value: @poll.name %>
   </p>
 
-  <p><button type="button" onclick="addOption()" class="btn btn-success">Add option</button></p>
+  <p><button type="button" onclick="addOption(this)" class="btn btn-success">Add option</button></p>
   <ul id="poll-options">
     <% @poll.options.each do |option| %>
       <li>

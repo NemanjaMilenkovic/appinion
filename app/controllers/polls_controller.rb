@@ -4,10 +4,7 @@ class PollsController < ApplicationController
         # @poll = Poll.new
     end
 
-    def show
-        @poll = Poll.find_by(id: params[:id])
-        redirect_to '/' if @poll.nil?
-    end
+    def show @poll = Poll.find_by(id: params[:id]) redirect_to '/' if @poll.nil? end
 
     def create
         @poll = Poll.new
@@ -30,8 +27,10 @@ class PollsController < ApplicationController
                     Poll.new
                 end
         options = data.delete :options
+
         @poll.update data
-        if @poll.save and @poll.options.count.positive?
+        num = data.count :options
+        if @poll.save and options.count.positive? :options
             @poll.options.delete_all
             options.each { |opt| @poll.options.create label: opt }
         end
