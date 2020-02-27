@@ -1,4 +1,7 @@
- <a href="/">Home</a>
+ <a href="/"><<</a>
+ <div class="nav-bar"> <h1>Create new poll</h1></div>
+ <br>
+
 
 <%= form_with url: '/save', scope: :poll, local: true do |form| %>
   <%= form.hidden_field :id, value: @poll.id %>
@@ -7,12 +10,12 @@
     <%= form.text_field :name, value: @poll.name %>
   </p>
 
-  <p><button type="button" onclick="addOption(this)" class="btn btn-success">Add option</button></p>
+  <p><button type="button" onclick="addOption(this)" class="save_button">Add option</button></p>
   <ul id="poll-options">
     <% @poll.options.each do |option| %>
       <li>
         <%= form.text_field 'options][', value: option.label %>
-        <button type="button" class="btn btn-success" onclick="deleteOption(this) ">delete</button>
+        <button type="button"  onclick="deleteOption(this) ">delete</button>
       </li>
     <% end %>
   </ul>

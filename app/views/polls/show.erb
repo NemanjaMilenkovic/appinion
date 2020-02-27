@@ -1,4 +1,7 @@
-<h1>Vote for <%= @poll.name %></h1>
+ <a href="/"><<</a>
+
+<div class="nav-bar"><h1>Vote for <%= @poll.name %></h1></div>
+<br>
 <ul>
     <% @poll.options.each do |option| %>
         <li>

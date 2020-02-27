@@ -1,20 +1,37 @@
-<h1>Polls</h1>
-<p>
-    <%= link_to 'Create new poll', action: :create %>
-</p>
+<link href="https://fonts.googleapis.com/css?family=Raleway:300&display=swap" rel="stylesheet">
+
+<div class="nav-bar"><h1>-vote-o-n</h1></div>
+<br><br>
+<table class="hoverTable">
+  <thead>
 <% if @polls.count.positive? %>
-    <ul>
         <% @polls.each do |poll| %>
-            <li>
-                <%= link_to poll.name, action: :show, id: poll.id %>
-                <span class="actions">(
-                    <%= link_to :edit, action: :edit, id: poll.id %> |
-                    <%= link_to :delete, { action: :remove, id: poll.id },
-                                data: { confirm: 'Do you wanna delete poll?' } %> 
-                )</span>
-            </li>
+            <tr>  
+            
+            <th>
+            <%=link_to poll.name, action: :show, id: poll.id %>
+            </th>
+            <th>
+        <span class="actions">(
+            <%= link_to :edit, action: :edit, id: poll.id %> | 
+            <%= link_to :delete, { action: :remove, id: poll.id },
+            data: { confirm: 'Do you wanna delete poll?' } %> 
+        )</span>
+            </th>
+            </tr>
         <% end %>
-    </ul>
+
 <% else %>
 <p>No polls at the moment.</p>
 <% end %>
+
+
+
+
+  </thead>
+</table>
+
+
+<div class="nav-bar"><h3>
+    <%= link_to 'Create new poll', action: :create %>
+</h3></div>

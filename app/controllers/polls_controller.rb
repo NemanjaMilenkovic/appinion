@@ -49,7 +49,7 @@ class PollsController < ApplicationController
 
     def vote
         Vote.create(option_id: params[:option])
-        redirect_to action: :show, id: params[:poll]
+        redirect_to action: :show, id: params[:poll], votes: params[:votes]
     end
 
     private
