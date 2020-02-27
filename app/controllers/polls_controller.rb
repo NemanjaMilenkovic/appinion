@@ -31,8 +31,7 @@ class PollsController < ApplicationController
         options = data.delete :options
 
         @poll.update data
-        num = data.count :options
-        if @poll.save and options.count.positive? :options
+        if @poll.save
             @poll.options.delete_all
             options.each { |opt| @poll.options.create label: opt }
         end
