@@ -4,7 +4,8 @@ class PollsController < ApplicationController
     end
 
     def show 
-        @poll = Poll.find_by(id: params[:id]) redirect_to '/' if @poll.nil? 
+        @poll = Poll.find_by(id: params[:id]) 
+        redirect_to '/' if @poll.nil? 
     end
 
     def create
@@ -15,7 +16,7 @@ class PollsController < ApplicationController
     def edit
         @poll = Poll.find_by(id: params[:id])
         redirect_to '/' if @poll.nil?
-        
+
         render :form
     end
 
