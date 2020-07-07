@@ -2,6 +2,8 @@
 
 https://vote-o-n.herokuapp.com/
 
+![](vote-o-n.gif)
+
 A simple app that allows anonymous voting for teams that need to make fast, unbiased decisions
 
 - Ruby version
